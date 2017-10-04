@@ -3326,8 +3326,6 @@ setInterval(function() {
         }
 }, 1000)
 
-
-
 setInterval(function () {
     var thisUpdate = new Date().getTime();
     if (thisUpdate - player.lastUpdate >= 21600000) giveAchievement("Don't you dare to sleep")
@@ -3663,18 +3661,28 @@ setInterval(function () {
     const scale2 = [" protons."," nucleuses."," Hydrogen atoms."," viruses."," red blood cells."," grains of sand."," grains of rice."," teaspoons."," wine bottles."," fridge-freezers."," Olympic-sized swimming pools."," Great Pyramids of Giza."," Great Walls of China."," large asteroids.",
                    " dwarf planets."," Earths."," Jupiters."," Suns."," red giants."," hypergiant stars."," nebulas."," Oort clouds."," Local Bubbles."," galaxies."," Local Groups."," Sculptor Voids."," observable universes."," Dimensions."];
     var id = 0;
-    if (player.money.times(4.22419e-105).gt(2.82e-45)) {
-        if (player.money.times(4.22419e-105).gt(1e113)) id = scale1.length - 1;
+    var scaleMoney = player.money.dividedBy(scaler)
+    if (scaleMoney.gt(new Decimal(Number.MAX_VALUE).dividedBy(2.82e-45))) {
+        scaler = scaler.times(Number.MAX_VALUE)
+        scaler2++;
+    }
+    if (scaleMoney.gt(2.82e-45)) {
+        if (scaleMoney.gt(1e113)) id = scale1.length - 1;
         else {
-            while (player.money.times(4.22419e-105).gt(scale1[id])) id++;
+            while (scaleMoney.gt(scale1[id])) id++;
             if (id > 0) id--;
         }
-        if (id >= 7 && id < 11) document.getElementById("infoScale").innerHTML = "If every antimatter were a planck volume, you would have enough to fill " + formatValue(player.options.notation, player.money * 4.22419e-105 / scale1[id], 2, 1) + scale2[id];
-        else document.getElementById("infoScale").innerHTML = "If every antimatter were a planck volume, you would have enough to make " + formatValue(player.options.notation, player.money.times(4.22419e-105).dividedBy(scale1[id]), 2, 1) + scale2[id];
+        if (scaler2 == 0) {
+            if (id >= 7 && id < 11) document.getElementById("infoScale").innerHTML = "If every antimatter were a planck volume, you would have enough to fill " + formatValue(player.options.notation, player.money.times(4.22419e-105/scale1[id]), 2, 1) + scale2[id];
+            else document.getElementById("infoScale").innerHTML = "If every antimatter were a planck volume, you would have enough to make " + formatValue(player.options.notation, player.money.times(4.22419e-105).dividedBy(scale1[id]), 2, 1) + scale2[id];
+        } else {
+            if (id >= 7 && id < 11) document.getElementById("infoScale").innerHTML = "If every infinity^" + scaler2 + " antimatter were a planck volume, you would have enough to fill " + formatValue(player.options.notation, player.money.times(4.22419e-105/scale1[id]), 2, 1) + scale2[id];
+            else document.getElementById("infoScale").innerHTML = "If every infinity^" + scaler2 + " antimatter were a planck volume, you would have enough to make " + formatValue(player.options.notation, player.money.times(4.22419e-105).dividedBy(scale1[id]), 2, 1) + scale2[id];
+        }
     } else {
-        if (player.money.times(1e-54) < 2.82e-45) document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-54 / player.money, 2, 1) + " attometers cubed, you would have enough to make a proton.";
-        else if (player.money * 1e-63 < 2.82e-45) document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-63 / player.money, 2, 1) + " zeptometers cubed, you would have enough to make a proton.";
-        else if (player.money * 1e-72 < 2.82e-45) document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-72 / player.money, 2, 1) + " yoctometers cubed, you would have enough to make a proton.";
+        if (player.money.lt(2.82e9)) document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-54 / player.money, 2, 1) + " attometers cubed, you would have enough to make a proton.";
+        else if (player.money.lt(2.82e18)) document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-63 / player.money, 2, 1) + " zeptometers cubed, you would have enough to make a proton.";
+        else if (player.money.lt(2.82e27)) document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-72 / player.money, 2, 1) + " yoctometers cubed, you would have enough to make a proton.";
         else document.getElementById("infoScale").innerHTML = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 4.22419e-105 / player.money, 2, 1) + " planck volumes, you would have enough to make a proton.";
     }
     
@@ -3726,6 +3734,9 @@ setInterval(function () {
 
     player.lastUpdate = thisUpdate;
 }, 50);
+
+var scaler = new Decimal(1/4.22419e-105);
+var scaler2 = 0;
 
 
 function dimBoolean() {
