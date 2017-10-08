@@ -3666,7 +3666,11 @@ setInterval(function () {
         scaler = scaler.times(Number.MAX_VALUE)
         scaler2++;
     }
-    if (scaleMoney.gt(2.82e-45)) {
+	if (scaleMoney.lt(2.82e-45) && scaler2 > 0) {
+        scaler = scaler.dividedBy(Number.MAX_VALUE)
+        scaler2--;
+    }
+    if (player.money.gt(2.82e-45/4.22419e-105)) {
         if (scaleMoney.gt(1e113)) id = scale1.length - 1;
         else {
             while (scaleMoney.gt(scale1[id])) id++;
