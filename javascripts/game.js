@@ -812,7 +812,7 @@ function getDimensionRateOfChange(tier) {
 }
 
 function getShiftRequirement(bulk) {
-    if (player.resets+bulk >= 275) return {tier: 9, amount:(player.resets+bulk-275)*15};
+    if (player.resets+bulk >= 276) return {tier: 9, amount:(player.resets+bulk-275)*15};
     
     let tier = Decimal.min(player.resets + 4, 8);
     let amount = 20;
@@ -4108,8 +4108,8 @@ setInterval(function () {
         document.getElementById("secondSoftReset").className = 'storebtn';
     }
     
-    if (player.ninthDimension[0] >= getGalaxyRequirement()) document.getElementById("softReset").className = 'storebtn';
-    else if (player.galaxies >= 68) document.getElementById("softReset").className = 'unavailablebtn';
+    if (player.ninthDimension[0] >= getGalaxyRequirement()) document.getElementById("secondSoftReset").className = 'storebtn';
+    else if (player.galaxies >= 68) document.getElementById("secondSoftReset").className = 'unavailablebtn';
     
     if (player.currentChallenge == "challenge2" || player.currentChallenge == "postc1") document.getElementById("chall2Pow").style.display = "inline-block"
     else document.getElementById("chall2Pow").style.display = "none"
