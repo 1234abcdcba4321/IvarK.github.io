@@ -379,7 +379,7 @@ function onLoad() {
     if (player.autobuyers[9]%1 !== 0) {
         if (player.autobuyers[9].bulk === null || player.autobuyers[9].bulk === undefined) player.autobuyers[9].bulk = 1
     }
-    if (player.ninthDimension == undefined) player.ninthDimension = [0,0,new Decimal('1e-2833'),new Decimal('1e41900'),2e223];
+    if (player.ninthDimension === undefined) player.ninthDimension = [0,0,new Decimal('1e-2833'),new Decimal('1e41900'),2e223];
 
     if (player.options.sacrificeConfirmation == false) document.getElementById("confirmation").checked = "true"
     transformSaveToDecimal();
