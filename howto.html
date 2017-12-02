@@ -74,7 +74,7 @@
   <br>
   Your first galaxy will increase your tickspeed interval upgrade as if it were 10% originally, so you will have 12% after 1 galaxy.
   <br>
-  Galaxies require 80+(galaxies*60) (base) Eighth Dimensions.
+  Galaxies require 80+(galaxies*60) (base) Eighth Dimensions. (80+galaxies*60+(galaxies-99)^2*2 when above 100 non-replicanti galaxies)
   <br>
     <b>Hotkey: G</b>
   </div>
@@ -161,7 +161,7 @@
   <br>
   <b>Fixing Infinity:</b>You can revert the breaking at anytime by clicking fix infinity.
   <br>
-  <b>IP Gain Formula:</b>10^(log(current antimatter)/308-0.75)*bonuses
+  <b>IP Gain Formula:</b>10^(log(current antimatter)/n-0.75)*bonuses, where n is 308 at default, 307.8 with the "This achievement doesn't exist II" achievement, or 290 with the relevant timestudy.
   </div>
   <hr>
   <button onclick='changestate(13)' class="storebtn">Infinity Dimensions</button>
@@ -181,11 +181,61 @@
     <br>
   They unlock at set amounts of antimatter - the ones unlocking later are (generally) more difficult.
     </div>
- <!--    <hr>
- <button onclick='changestate(15)' class="storebtn">Eternities</button>
+ <hr>
+ <button onclick='changestate(15)' class="storebtn">Replicanti</button>
   <div style="text-align: left" id='div15' class='hidden'>
-    Coming Soon (TM)!
-    </div> -->
+    Each replicanti has an upgradable chance to update every replicanti tick. You will gain a bonus to infinity dimensions based on much replicanti you have.
+    <br>
+    When replicanti reach infinity, you can buy a galaxy. This will not increase the cost of normal galaxies. The amount of replicanti galaxies you can have is capped (upgradable). Once you reach infinity replicanti, they will not continue growing.
+    <br>
+    When offline, in an inactive tab, lagging, or a tickspeed under 50ms, replicanti get calculated with an approximation. This can cause wildly varying results, especially at low numbers.
+    <br>
+    When at low values (100-1000) (when none of the conditions above are true), there may be some minor variances in the expected amount of replicanti gain.
+    <br><b>Formulas:
+    <br>Infinity Dimension power increase:</b> log2(replicanti)^2, plus replicanti^0.032 if you have the relevant time study, times 5^galaxies if you have that time study.
+    <br><b>Chance upgrade cost:</b>x(1e15) per upgrade
+    <br><b>Speed upgrade cost:</b>x(1e10) per upgrade
+    <br><b>Galaxy upgrade cost:</b>1e(170+n*25+n^2*5)
+    </div>
+    <hr>
+     <button onclick='changestate(16)' class="storebtn">Eternity</button>
+  <div style="text-align: left" id='div16' class='hidden'>
+    Upon reaching infinity Infinity Points, you can eternity. Eternities will reset everything before this point except challenge times, achievements, and total antimatter. You also unlock a new tab.
+    <br>
+    You can pass infinity Infinity Points whenever. You will recieve more Eternity Points the nore Infinity Points you had before going Eternal.
+    <br>
+    <b>EP gain formula:</b> floor(5^(floor(log10(IP))/308-0.7)*bonuses. The x10 EP time study gives the bonus before the outer floor.
+    </div>
+    <hr>
+    <button onclick='changestate(17)' class="storebtn">Milestones</button>
+  <div style="text-align: left" id='div17' class='hidden'>
+    To make eternities faster and more convenient, you will unlock various buffs as you get more eternities. These buffs are either making you start with something on eternity or unlock an autobuyer.
+    <br>
+    For the buffs at the the start of an eternity, you will keep it on the run you unlock thr milestone. (On 1 > 2, you will keep your autobuyers.)
+    <br>
+    The last milestone is at 100 eternities and allows full automation.
+    </div>
+    <button onclick='changestate(18)' class="storebtn">Time Dimensions</button>
+  <div style="text-align: left" id='div18' class='hidden'>
+    After your first eternity, you unlock Time Dimensions. You buy them with EP and they provide time shards, which give free tickspeed upgrades (which don't increase the price). These free tickspeed upgrades stay on infinity (applying retroactively to your tickspeed mult through more galaxies).
+    <br>
+    Similarly to the other dimensions, a Time Dimension 2 produces a Time Dimension 1 and so on.
+    <br>
+    Each tick threshold takes 33% more time shards than the previous (25% with the relevant time study).
+    </div>
+    <hr>
+  <button onclick='changestate(19)' class="storebtn">Time Study</button>
+  <div style="text-align: left" id='div19' class='hidden'>
+    A Time Study is a powerful post-eternity upgrade, which costs Time Theorems. Time Studies are laid out in a tree-like fashion, where you must buy preresiquites before continuing. There are sometimes choices to make with which Time Study to buy, as you cannot get all of them even if affordable.
+    <br>
+    Time Theorems are a limited resource which costs more for each one you buy. They can be bought with antimatter, infinity points, and eternity points.
+    <br>
+    <b>Respecs:</b> A Respec allows you to reset the upgrades you have in the tree to retreive the Time Theorems spent on them. It can be done for free on eternity.
+    <br>
+    <b>Costs:</b> x1e20000 for each from antimatter, x1e100 for each from IP, x2 for each from EP.
+    </div>
+    <hr>
+    <a href="https://www.reddit.com/r/AntimatterDimensions/comments/73jhqe/patashus_antimatter_dimensions_guide/?utm_content=title&utm_medium=hot&utm_source=reddit&utm_name=AntimatterDimensions">Strategy Guide</a>
   </body>
   </html>
   
