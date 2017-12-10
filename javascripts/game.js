@@ -6532,9 +6532,10 @@ var newsArray = [//always true
 ["Achievement Unlocked!", player.achievements.length == 80, "c4"],
 ["Did you use an autoclicker for that?", player.timestudy.studies.includes(131) && player.thisInfinityTime <= 600 && player.replicanti.galaxies >= 50, "c5"],
 ["Timing is key.", player.thisEternity < 1, "c6"],
-["If you want to farm infinitied, why don't you just get the time study?", player.timestudy.studies.includes(32) && player.infinitied > 72000 * 168, "c7"],
+["If you want to farm infinitied, why don't you just get the time study?", !player.timestudy.studies.includes(32) && player.infinitied > 72000 * 168, "c7"],
 ["The achievement is for two million, not two billion...", player.infinitied > 2e9, "c8"],
 ["Keep up the quick pace!", Marathon > 1200, "c9"],
+["Vocarious speedrunner rages after being told he wasted his time.", worstChallengeTime == 0.1, "c10"]
 //luck
 ["This news message is 100x rarer than all the others.", Math.random() < 0.01, "l1"],
 ["You just won a small prize in the lottery.", Math.random() < 1e-4, "l2"],
