@@ -38,7 +38,7 @@
         </div>
         <div id="matter"></div>
         <div style="position: relative"><div class="TP" id="infinityPoints2"></div></div>
-        <div style="position: relative"><div class="EP" id="eternityPoints2"></div></div>
+        <div style="position: relative"><div class="NS" id="eternityPoints2"></div></div>
         <div>
             <p>You have <span id="coinAmount" style="font-size:25px; color: black">0</span> antimatter.</p>
         </div>
@@ -81,8 +81,8 @@
                 <span id="kongip"> Double your TP gain from all sources. Forever. </span><br>
                 <button class="greedbtn" onclick="purchaseTP()">40 Kreds</button>
                 <br><br><br>
-                <span id="kongep"> Double your EP gain from all sources. Forever. </span><br>
-                <button class="greedbtn" onclick="purchaseEP()">50 Kreds</button>
+                <span id="kongep"> Double your NS gain from all sources. Forever. </span><br>
+                <button class="greedbtn" onclick="purchaseNS()">50 Kreds</button>
                 <br><br><br>
                 <span id="kongdim"> Double all your dimension multipliers (dimensions 1-8). Forever. </span><br>
                 <button class="greedbtn" onclick="purchaseDimMult()">30 Kreds</button>
@@ -149,7 +149,7 @@
                 <table class="table" id="studytable">
                     <tr>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
-                        <td><button class="timestudy" id="61" onclick="buyTimeStudy(61, 3)">You gain 10x more EP<span>Cost: 3 Time Theorems</button></td>
+                        <td><button class="timestudy" id="61" onclick="buyTimeStudy(61, 3)">You gain 10x more NS<span>Cost: 3 Time Theorems</button></td>
                         <td><button class="timestudy" id="62" onclick="buyTimeStudy(62, 3)">You gain replicanti 3 times faster<span>Cost: 3 Time Theorems</button></td>
                     </tr>
                 </table>
@@ -187,9 +187,9 @@
                 <br>
                 <table class="table" id="studytable">
                     <tr>
-                        <td><button class="timestudy activestudy" id="121" onclick="buyTimeStudy(121, 9)">The worse your average EP/min is on last ten eternities, the more EP you get.<span>Currently: Xx more EP<span>Cost: 9 Time Theorems</button></td>
-                        <td><button class="timestudy passivestudy" id="122" onclick="buyTimeStudy(122, 9)">You gain 35x more EP<span>Cost: 9 Time Theorems</button></td>
-                        <td><button class="timestudy idlestudy" id="123" onclick="buyTimeStudy(123, 9)">You gain more EP based on time spent this eternity.<span>Currently: Xx more EP<span>Cost: 9 Time Theorems</button></td>
+                        <td><button class="timestudy activestudy" id="121" onclick="buyTimeStudy(121, 9)">The worse your average NS/min is on last ten eternities, the more NS you get.<span>Currently: Xx more NS<span>Cost: 9 Time Theorems</button></td>
+                        <td><button class="timestudy passivestudy" id="122" onclick="buyTimeStudy(122, 9)">You gain 35x more NS<span>Cost: 9 Time Theorems</button></td>
+                        <td><button class="timestudy idlestudy" id="123" onclick="buyTimeStudy(123, 9)">You gain more NS based on time spent this eternity.<span>Currently: Xx more NS<span>Cost: 9 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable">
@@ -313,24 +313,24 @@
                 <table class="table" style="margin: 0 auto">
                     <tr>
                         <td>
-                            <button id="eter1" class="eternityupbtn" onclick="buyEternityUpgrade(1, 5)">Infinity Dimensions multiplier equal to unspent EP to the power of 5.<br>Currently: x<br>Cost: 5 EP</button>
+                            <button id="eter1" class="eternityupbtn" onclick="buyEternityUpgrade(1, 5)">Infinity Dimensions multiplier equal to unspent NS to the power of 5.<br>Currently: x<br>Cost: 5 NS</button>
                         </td>
                         <td>
-                            <button id="eter2" class="eternityupbtn" onclick="buyEternityUpgrade(2, 10)">You gain Infinity Dimension multiplier based on eternities (x^log4(2x))<br>Currently: x<br>Cost: 10 EP</button>
+                            <button id="eter2" class="eternityupbtn" onclick="buyEternityUpgrade(2, 10)">You gain Infinity Dimension multiplier based on eternities (x^log4(2x))<br>Currently: x<br>Cost: 10 NS</button>
                         </td>
                         <td>
-                            <button id="eter3" class="eternityupbtn" onclick="buyEternityUpgrade(3, 50e3)">Infinity Dimensions multiplier based on sum of Infinity Challenge times<br>Currently: Xx<br>Cost: 50 K EP</button>
+                            <button id="eter3" class="eternityupbtn" onclick="buyEternityUpgrade(3, 50e3)">Infinity Dimensions multiplier based on sum of Infinity Challenge times<br>Currently: Xx<br>Cost: 50 K NS</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button id="eter4" class="eternityupbtn" onclick="buyEternityUpgrade(4, 1e16)">Your achievement bonus affects Time Dimensions<br>Cost: 1e16 EP</button>
+                            <button id="eter4" class="eternityupbtn" onclick="buyEternityUpgrade(4, 1e16)">Your achievement bonus affects Time Dimensions<br>Cost: 1e16 NS</button>
                         </td>
                         <td>
-                            <button id="eter5" class="eternityupbtn" onclick="buyEternityUpgrade(5, 1e40)">Time Dimensions are multiplied by your unspent time theorems<br>Cost: 1e40 EP</button>
+                            <button id="eter5" class="eternityupbtn" onclick="buyEternityUpgrade(5, 1e40)">Time Dimensions are multiplied by your unspent time theorems<br>Cost: 1e40 NS</button>
                         </td>
                         <td>
-                            <button id="eter6" class="eternityupbtn" onclick="buyEternityUpgrade(6, 1e50)">Time Dimensions are multiplied by days played<br>Cost: 1e50 EP</button>
+                            <button id="eter6" class="eternityupbtn" onclick="buyEternityUpgrade(6, 1e50)">Time Dimensions are multiplied by days played<br>Cost: 1e50 NS</button>
                         </td>
                     </tr>
                     <tr>
@@ -338,7 +338,7 @@
                             <div class="eternityupbtnbought" style="opacity: 0"></div>
                         </td>
                         <td>
-                            <button id="epmult" class="eternityupbtn" onclick="buyEPMult()">You gain 5 times more EP<p>Cost: 500 EP</button>
+                            <button id="epmult" class="eternityupbtn" onclick="buyNSMult()">You gain 5 times more NS<p>Cost: 500 NS</button>
                         </td>
                         <td>
                             <div class="eternityupbtnbought" style="opacity: 0"></div>
@@ -1314,7 +1314,7 @@
                             <div id="Popular music" class="achievement achievementlocked" style="background-image: url(images/86.png)" ach-tooltip="Have 180 times more replicanti galaxies than normal galaxies. Reward: Replicanti galaxies divide your replicanti by 1.79e308 instead of resetting them to 1."><br></div>
                         </td>
                         <td>
-                            <div id="But I wanted another prestige layer..." class="achievement achievementlocked" style="background-image: url(images/87.png)" ach-tooltip="Reach 1e308 EP"><br></div>
+                            <div id="But I wanted another prestige layer..." class="achievement achievementlocked" style="background-image: url(images/87.png)" ach-tooltip="Reach 1e308 NS"><br></div>
                         </td>
                         <td>
                             <div id="What do I have to do to get rid of you" class="achievement achievementlocked" style="background-image: url(images/88.png)" ach-tooltip="Gain 1e22000 TP without any time studies. Reward: Time dimensions are multiplied by the number of studies you have."><br></div>
@@ -1962,7 +1962,7 @@
                 <br>
                 <div class="autoBuyerDiv" id="autoBuyerEter">
                     <div>Automatic Eternity</div>
-                    <div><span>Amount of EP to wait until reset:</span>
+                    <div><span>Amount of NS to wait until reset:</span>
                     <input type="text" onchange="updatePriorities()" id="priority13"></input></div>
                     <br>
                     <span style="font-size: 80%">Is active</span>
@@ -2409,7 +2409,7 @@
         <button class="timetheorembtn" onclick="maxTheorems()" style="margin-left:-266px; width:130px; height: 30px; font-size: 0.75rem; bottom: 77px;">Buy max Theorems</button>
         <button class="timetheorembtn" onclick="buyWithAntimatter()" id="theoremam" style="margin-left: -266px">Buy Time Theorems <br>Cost: 1e20000 antimatter</button>
         <button class="timetheorembtn" onclick="buyWithTP()" id="theoremip" style="margin-left: -86px">Buy Time Theorems <br>Cost: 1 TP</button>
-        <button class="timetheorembtnlocked" onclick="buyWithEP()" id="theoremep" style="margin-left: 96px">Buy Time Theorems <br>Cost: 1 EP</button>
+        <button class="timetheorembtnlocked" onclick="buyWithNS()" id="theoremep" style="margin-left: 96px">Buy Time Theorems <br>Cost: 1 NS</button>
         <div id="theorembuybackground"></div>
         <p id="timetheorems" style="position: fixed;">You have 0 Time Theorems.</p>
     </div>
