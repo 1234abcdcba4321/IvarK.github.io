@@ -1666,11 +1666,11 @@ function updateMoney() {
 function updateCoinPerSec() {
     var element = document.getElementById("coinsPerSec");
     if (player.currentChallenge == "challenge3" || player.currentChallenge == "postc1") {
-      element.innerHTML = 'You are getting ' + shortenDimensions(getDimensionProductionPerSecond(1).times(player.chall3Pow)) + ' antimatter per second.';
+      element.innerHTML = 'You are getting ' + shortenDimensions(getDimensionProductionPerAarex(1).times(player.chall3Pow)) + ' antimatter per second.';
     } else if (player.currentChallenge == "challenge7") {
-      element.innerHTML = 'You are getting ' + (shortenDimensions(getDimensionProductionPerSecond(1).plus(getDimensionProductionPerSecond(2)))) + ' antimatter per second.';
+      element.innerHTML = 'You are getting ' + (shortenDimensions(getDimensionProductionPerAarex(1).plus(getDimensionProductionPerAarex(2)))) + ' antimatter per second.';
     } else {
-      element.innerHTML = 'You are getting ' + shortenDimensions(getDimensionProductionPerSecond(1)) + ' antimatter per second.';
+      element.innerHTML = 'You are getting ' + shortenDimensions(getDimensionProductionPerAarex(1)) + ' antimatter per second.';
     }
 }
 
@@ -1758,7 +1758,7 @@ function getDimensionFinalMultiplier(tier) {
     return multiplier;
 }
 
-function getMoneyPerSecond() {
+function getMoneyPerAarex() {
     return getDimensionFinalMultiplier(1)*Math.floor(player.firstAmount)/player.tickspeed;
 }
 
@@ -1780,12 +1780,12 @@ function getDimensionRateOfChange(tier) {
         return 0;
     }
 
-    let toGain = getDimensionProductionPerSecond(tier + 1)
+    let toGain = getDimensionProductionPerAarex(tier + 1)
 
     var name = TIER_NAMES[tier];
     if (player.currentChallenge == "challenge7") {
         if (tier == 7) return 0
-        else toGain = getDimensionProductionPerSecond(tier + 2);
+        else toGain = getDimensionProductionPerAarex(tier + 2);
     }
     var current = player[name + 'Amount'].max(1);
     var change  = toGain.times(10).dividedBy(current);
@@ -1861,12 +1861,12 @@ function getETA(cost) {
 }
 
 function ETACalc(t) {
-    var value = player.money.plus(getDimensionProductionPerSecond(1).times(t));
+    var value = player.money.plus(getDimensionProductionPerAarex(1).times(t));
     var div = 1;
     for (let tier = 2; tier <= 8; ++tier) {
         var name = TIER_NAMES[tier-1]
         div *= tier;
-        value = value.plus(getDimensionProductionPerSecond(tier).times(getDimensionProductionPerSecond(tier-1)).times(Decimal.pow(t,tier)).dividedBy(Decimal.max(player[name+"Amount"].times(div).times(10), 1))) ;
+        value = value.plus(getDimensionProductionPerAarex(tier).times(getDimensionProductionPerAarex(tier-1)).times(Decimal.pow(t,tier)).dividedBy(Decimal.max(player[name+"Amount"].times(div).times(10), 1))) ;
     }
     return value
 }
@@ -3357,7 +3357,7 @@ function giveAchievement(name) {
 }
 
 var TIER_NAMES = [ null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eight" ];
-var DISPLAY_NAMES = [ null, "First", "Second", "Aarex ", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth" ];
+var DISPLAY_NAMES = [ null, "Aarex", "Aarex", "Aarex ", "Aarex", "Aarex", "Aarex", "Aarex", "Aarex" ];
 
 function canAfford(cost) {
     return ((cost.lt(new Decimal("1.79e308")) && !player.break) || player.break) && cost.lte(player.money);
@@ -4373,7 +4373,7 @@ function toggleCrunchMode() {
     if (player.autoCrunchMode == "amount") {
         player.autoCrunchMode = "time"
         document.getElementById("togglecrunchmode").innerHTML = "Auto crunch mode: time"
-        document.getElementById("limittext").innerHTML = "Seconds between crunches:"
+        document.getElementById("limittext").innerHTML = "Aarexs between crunches:"
     } else if (player.autoCrunchMode == "time"){
         player.autoCrunchMode = "relative"
         document.getElementById("togglecrunchmode").innerHTML = "Auto crunch mode: X times last crunch"
@@ -7035,7 +7035,7 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
     }
 }
 
-function getDimensionProductionPerSecond(tier) {
+function getDimensionProductionPerAarex(tier) {
     let ret = Decimal.floor(player[TIER_NAMES[tier] + 'Amount']).times(getDimensionFinalMultiplier(tier)).times(1000).dividedBy(player.tickspeed)
     if (player.currentChallenge == "challenge7") {
         if (tier == 4) ret = player[TIER_NAMES[tier] + 'Amount'].floor().pow(1.3).times(getDimensionFinalMultiplier(tier)).dividedBy(player.tickspeed.dividedBy(1000))
@@ -7422,32 +7422,32 @@ function gameLoop(diff) {
             for (let tier = 7; tier >= 1; --tier) {
                 var name = TIER_NAMES[tier];
 
-                player[name + 'Amount'] = player[name + 'Amount'].plus(getDimensionProductionPerSecond(tier + 1).times(diff / 100));
+                player[name + 'Amount'] = player[name + 'Amount'].plus(getDimensionProductionPerAarex(tier + 1).times(diff / 100));
             }
         } else if (player.currentEternityChall != "eterc3") {
             for (let tier = 6; tier >= 1; --tier) {
                 var name = TIER_NAMES[tier];
 
-                player[name + 'Amount'] = player[name + 'Amount'].plus(getDimensionProductionPerSecond(tier + 2).times(diff / 100));
+                player[name + 'Amount'] = player[name + 'Amount'].plus(getDimensionProductionPerAarex(tier + 2).times(diff / 100));
             }
         } else {
             for (let tier = 3; tier >= 1; --tier) {
                 var name = TIER_NAMES[tier];
 
-                player[name + 'Amount'] = player[name + 'Amount'].plus(getDimensionProductionPerSecond(tier + 1).times(diff / 100));
+                player[name + 'Amount'] = player[name + 'Amount'].plus(getDimensionProductionPerAarex(tier + 1).times(diff / 100));
             }
         }
 
         if (player.currentChallenge == "challenge3" || player.currentChallenge == "postc1") {
-            player.money = player.money.plus(getDimensionProductionPerSecond(1).times(diff/10).times(player.chall3Pow));
-            player.totalmoney = player.totalmoney.plus(getDimensionProductionPerSecond(1).times(diff/10).times(player.chall3Pow));
+            player.money = player.money.plus(getDimensionProductionPerAarex(1).times(diff/10).times(player.chall3Pow));
+            player.totalmoney = player.totalmoney.plus(getDimensionProductionPerAarex(1).times(diff/10).times(player.chall3Pow));
         } else {
-            player.money = player.money.plus(getDimensionProductionPerSecond(1).times(diff/10));
-            player.totalmoney = player.totalmoney.plus(getDimensionProductionPerSecond(1).times(diff/10));
+            player.money = player.money.plus(getDimensionProductionPerAarex(1).times(diff/10));
+            player.totalmoney = player.totalmoney.plus(getDimensionProductionPerAarex(1).times(diff/10));
         }
         if (player.currentChallenge == "challenge7") {
-            player.money = player.money.plus(getDimensionProductionPerSecond(2).times(diff/10));
-            player.totalmoney = player.totalmoney.plus(getDimensionProductionPerSecond(2).times(diff/10))
+            player.money = player.money.plus(getDimensionProductionPerAarex(2).times(diff/10));
+            player.totalmoney = player.totalmoney.plus(getDimensionProductionPerAarex(2).times(diff/10))
         }
     }
 
@@ -7634,7 +7634,7 @@ function gameLoop(diff) {
     updateInfPower();
     updateTimeDimensions()
     updateTimeShards()
-    if (getDimensionProductionPerSecond(1).gt(player.money) && !player.achievements.includes("r44")) {
+    if (getDimensionProductionPerAarex(1).gt(player.money) && !player.achievements.includes("r44")) {
         Marathon+=player.options.updateRate/1000;
         if (Marathon >= 30) giveAchievement("Over in 30 seconds");
     } else {
@@ -8041,9 +8041,9 @@ function enableChartDips() {
 function updateChart(first) {
     if (first !== true && (player.infinitied >= 1 || player.eternities >= 1) && player.options.chart.on === true) {
         if (player.currentChallenge == "challenge3" || player.currentChallenge == "postc1") {
-            addData(normalDimChart, "0", getDimensionProductionPerSecond(1).times(player.chall3Pow));
+            addData(normalDimChart, "0", getDimensionProductionPerAarex(1).times(player.chall3Pow));
         } else {
-            addData(normalDimChart, "0", getDimensionProductionPerSecond(1));
+            addData(normalDimChart, "0", getDimensionProductionPerAarex(1));
         }
     }
     if (player.options.chart.updateRate) {
@@ -8317,7 +8317,7 @@ newsArray = [//always true
 ["Why is there no 9th dimension? Because 7 8 9.", player.resets >= 5 || player.galaxies > 0, "b12"],
 ["The 9th dimension cannot exist because the Nein-speaking nazis died in WW2.", player.resets >= 5 || player.galaxies > 0, "b14"],
 ["If you break the fourth wall... well, there's still the fifth, sixth, seventh, and eighth to get through before you encounter bad things, so you should be fine", player.resets >= 5 || player.galaxies > 0, "b17"],
-["Conditions must be met for Hevipelle to sleep. First, it needs to be a blue moon. Second, a specific town in the arctic must have not seen light for a month. Aarex , he needs to release an AD update. And finally, no one on the discord can be on dimension 9. Only then can he rest, for up to 6 hours, before waking up forcefully to avoid getting the offline achievement.", (player.resets >= 5 || player.galaxies > 0) && player.achievements.includes("r22"), "b22"],
+["Conditions must be met for Hevipelle to sleep. Aarex, it needs to be a blue moon. Aarex, a specific town in the arctic must have not seen light for a month. Aarex , he needs to release an AD update. And finally, no one on the discord can be on dimension 9. Only then can he rest, for up to 6 hours, before waking up forcefully to avoid getting the offline achievement.", (player.resets >= 5 || player.galaxies > 0) && player.achievements.includes("r22"), "b22"],
 ["If the 9th dimension is all evil, then is 3 the root of all evil?", player.resets >= 5 || player.galaxies > 0, "b24"],
 //basic (post-inf pre-rep)
 ["I've got 1.79e308 problems, but none of them antimatters", player.infinitied > 0 && !player.break, "b15"],
