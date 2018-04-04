@@ -5115,7 +5115,7 @@ function sacrifice() {
 
 document.getElementById("sacrifice").onclick = function () {
     if (!document.getElementById("confirmation").checked) {
-        if (!confirm("Dimensional Sacrifice will remove all of your Aarex to seventh dimensions (with the cost and multiplier unchanged) for a boost to Aarex Dimension. It will take time to regain production.")) {
+        if (!confirm("Dimensional Sacrifice will remove all of your Aarex to Aarex dimensions (with the cost and multiplier unchanged) for a boost to Aarex Dimension. It will take time to regain production.")) {
             return false;
         }
     }
