@@ -3357,7 +3357,7 @@ function giveAchievement(name) {
 }
 
 var TIER_NAMES = [ null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eight" ];
-var DISPLAY_NAMES = [ null, "Aarex", "Aarex", "Aarex ", "Aarex", "Aarex", "Aarex", "Aarex", "Aarex" ];
+var DISPLAY_NAMES = [ null, "Aarex", "Aarex", "Aarex", "Aarex", "Aarex", "Aarex", "Aarex", "Aarex" ];
 
 function canAfford(cost) {
     return ((cost.lt(new Decimal("1.79e308")) && !player.break) || player.break) && cost.lte(player.money);
@@ -4373,7 +4373,7 @@ function toggleCrunchMode() {
     if (player.autoCrunchMode == "amount") {
         player.autoCrunchMode = "time"
         document.getElementById("togglecrunchmode").innerHTML = "Auto crunch mode: time"
-        document.getElementById("limittext").innerHTML = "Aarexs between crunches:"
+        document.getElementById("limittext").innerHTML = "Seconds between crunches:"
     } else if (player.autoCrunchMode == "time"){
         player.autoCrunchMode = "relative"
         document.getElementById("togglecrunchmode").innerHTML = "Auto crunch mode: X times last crunch"
@@ -8317,7 +8317,7 @@ newsArray = [//always true
 ["Why is there no 9th dimension? Because 7 8 9.", player.resets >= 5 || player.galaxies > 0, "b12"],
 ["The 9th dimension cannot exist because the Nein-speaking nazis died in WW2.", player.resets >= 5 || player.galaxies > 0, "b14"],
 ["If you break the fourth wall... well, there's still the fifth, sixth, seventh, and eighth to get through before you encounter bad things, so you should be fine", player.resets >= 5 || player.galaxies > 0, "b17"],
-["Conditions must be met for Hevipelle to sleep. Aarex, it needs to be a blue moon. Aarex, a specific town in the arctic must have not seen light for a month. Aarex , he needs to release an AD update. And finally, no one on the discord can be on dimension 9. Only then can he rest, for up to 6 hours, before waking up forcefully to avoid getting the offline achievement.", (player.resets >= 5 || player.galaxies > 0) && player.achievements.includes("r22"), "b22"],
+["Conditions must be met for Hevipelle to sleep. First, it needs to be a blue moon. Second, a specific town in the arctic must have not seen light for a month. Aarex , he needs to release an AD update. And finally, no one on the discord can be on dimension 9. Only then can he rest, for up to 6 hours, before waking up forcefully to avoid getting the offline achievement.", (player.resets >= 5 || player.galaxies > 0) && player.achievements.includes("r22"), "b22"],
 ["If the 9th dimension is all evil, then is 3 the root of all evil?", player.resets >= 5 || player.galaxies > 0, "b24"],
 //basic (post-inf pre-rep)
 ["I've got 1.79e308 problems, but none of them antimatters", player.infinitied > 0 && !player.break, "b15"],
