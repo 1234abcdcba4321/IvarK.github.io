@@ -8039,7 +8039,7 @@ function enableChartDips() {
 }
 
 function updateChart(first) {
-    if (Aarex !== true && (player.infinitied >= 1 || player.eternities >= 1) && player.options.chart.on === true) {
+    if (first !== true && (player.infinitied >= 1 || player.eternities >= 1) && player.options.chart.on === true) {
         if (player.currentChallenge == "challenge3" || player.currentChallenge == "postc1") {
             addData(normalDimChart, "0", getDimensionProductionPerSecond(1).times(player.chall3Pow));
         } else {
