@@ -5905,7 +5905,7 @@ window.addEventListener('keydown', function(event) {
 		    
 	    case 80: //P
 			pause = !pause;
-			if (!pause) player.lastUpdate = new Date().getTime;
+			if (!pause) player.lastUpdate = new Date().getTime();
 		break;
     }
   }, false);
