@@ -4682,8 +4682,8 @@ var EPminpeak = new Decimal(0)
 var replicantiTicks = 0
 
 
-function gameLoop(diff) {
-	if (pause) return;
+function gameLoop(diff,f) {
+	if (pause && f==undefined) return;
     var thisUpdate = new Date().getTime();
     if (thisUpdate - player.lastUpdate >= 21600000) giveAchievement("Don't you dare to sleep")
     if (typeof diff === 'undefined') var diff = Math.min(thisUpdate - player.lastUpdate, 21600000);
@@ -5746,6 +5746,7 @@ function init() {
     updateAutobuyers();
     updateChallengeTimes()
     kong.init();
+	gameLoop(0,true)
 
     //if (typeof kongregate === 'undefined') document.getElementById("shopbtn").style.display = "none"
 
