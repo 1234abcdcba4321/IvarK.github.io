@@ -15,6 +15,7 @@ var implosionCheck = 0;
 var TIER_NAMES = [ null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eight" ];
 var DISPLAY_NAMES = [ null, "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth" ];
 var forceHardReset = false;
+var pause = true;
 var player = {
     money: new Decimal(10),
     tickSpeedCost: new Decimal(1000),
@@ -4682,6 +4683,7 @@ var replicantiTicks = 0
 
 
 function gameLoop(diff) {
+	if (pause) return;
     var thisUpdate = new Date().getTime();
     if (thisUpdate - player.lastUpdate >= 21600000) giveAchievement("Don't you dare to sleep")
     if (typeof diff === 'undefined') var diff = Math.min(thisUpdate - player.lastUpdate, 21600000);
@@ -5899,6 +5901,11 @@ window.addEventListener('keydown', function(event) {
         case 82: //R
             replicantiGalaxy()
         break;
+		    
+	    case 80: //P
+			pause = !pause;
+			if (!pause) player.lastUpdate = new Date().getTime;
+		break;
     }
   }, false);
 
